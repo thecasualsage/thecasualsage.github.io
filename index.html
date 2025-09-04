@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedanta Wisdom | Find Your Spiritual Mentor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --light-pink: #f8e6e9;
+            --medium-pink: #ecc7d2;
+            --dark-pink: #d291bc;
+            --violet: #8a4fff;
+            --deep-violet: #5d30af;
+            --text-dark: #2d1b3b;
+            --text-light: #4a4a4a;
+            --white: #ffffff;
+            --cream: #fffaf0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-pink);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--deep-violet);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--violet);
+            font-style: italic;
+        }
+        
+        .circle-container {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 40px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .outer-circle {
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--violet);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: gentle-pulse 12s infinite ease-in-out;
+            opacity: 0.6;
+        }
+        
+        .inner-circle {
+            width: 70%;
+            height: 70%;
+            background: linear-gradient(135deg, var(--medium-pink) 0%, var(--violet) 100%);
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: gentle-breathe 15s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(138, 79, 255, 0.2);
+            opacity: 0.8;
+        }
+        
+        .inner-circle-content {
+            text-align: center;
+            color: var(--white);
+            font-size: 0.9rem;
+            padding: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .search-section {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .search-section h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--deep-violet);
+        }
+        
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--deep-violet);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--white);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            transition: border 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border: 2px solid var(--violet);
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--violet) 0%, var(--deep-violet) 100%);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(93, 48, 175, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(93, 48, 175, 0.4);
+        }
+        
+        .results-section {
+            margin: 40px 0;
+        }
+        
+        .results-section h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--deep-violet);
+        }
+        
+        .mentors-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .mentor-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .mentor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mentor-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--medium-pink) 0%, var(--violet) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 5rem;
+        }
+        
+        .mentor-info {
+            padding: 25px;
+        }
+        
+        .mentor-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: var(--deep-violet);
+        }
+        
+        .mentor-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            color: var(--violet);
+        }
+        
+        .mentor-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .skill {
+            background: rgba(138, 79, 255, 0.1);
+            color: var(--deep-violet);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .mentor-offerings {
+            margin-top: 15px;
+        }
+        
+        .mentor-offerings h4 {
+            margin-bottom: 10px;
+            color: var(--deep-violet);
+        }
+        
+        .offerings-list {
+            list-style-type: none;
+        }
+        
+        .offerings-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .offerings-list li:before {
+            content: "•";
+            color: var(--violet);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        
+        .mentor-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .action-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: var(--violet);
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--violet);
+            border: 2px solid var(--violet);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(210, 145, 188, 0.3);
+            color: var(--deep-violet);
+        }
+        
+        @keyframes gentle-pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.03); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.6; }
+        }
+        
+        @keyframes gentle-breathe {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--violet);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-theme {
+            background-color: #1a1a2e;
+            color: #e6e6e6;
+        }
+        
+        .dark-theme .search-section,
+        .dark-theme .mentor-card {
+            background: rgba(45, 27, 59, 0.8);
+            color: #e6e6e6;
+        }
+        
+        .dark-theme input,
+        .dark-theme select {
+            background: #2d1b3b;
+            color: #e6e6e6;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .circle-container {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .mentors-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        
+        <header>
+            <h1 class="logo">The Casual Sage</h1>
+            <p class="tagline">In Pursuit of Blissness!/p>
+            
+            <div class="circle-container">
+                <div class="outer-circle"></div>
+                <div class="inner-circle">
+                    <div class="inner-circle-content">
+                        <p>Breathe • Visualize • Transform • Feel</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <section class="search-section">
+            <h2>Find Your Port? (mentor) </h2>
+            <div class="search-form">
+                <div class="form-group">
+                    <label for="location"><i class="fas fa-map-marker-alt"></i> Your Location</label>
+                    <input type="text" id="location" placeholder="City, State or Zip Code">
+                </div>
+                
+                <div class="form-group">
+                    <label for="interest"><i class="fas fa-heart"></i> Interest</label>
+                    <select id="interest">
+                        <option value="">Select an interest</option>
+                        <option value="breathwork">Breathwork</option>
+                        <option value="visualization">Visualization</option>
+                        <option value="yoga-philosophy">Philosophy of Yoga</option>
+                        <option value="vedanta">Vedanta Studies</option>
+                        <option value="meditation">Meditation</option>
+                        <option value="ayurveda">Ayurveda</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="format"><i class="fas fa-users"></i> Format</label>
+                    <select id="format">
+                        <option value="">Group or Individual</option>
+                        <option value="group">Group Sessions</option>
+                        <option value="individual">One-on-One</option>
+                        <option value="both">Both</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button id="search-btn">Find Mentors</button>
+            </div>
+        </section>
+        
+        <section class="results-section">
+            <h2>Featured Portals (jesus)</h2>
+            <div class="mentors-container">
+                <!-- Mentor 1 -->
+                <div class="mentor-card">
+                    <div class="mentor-image">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name">Aria Moon</h3>
+                        <div class="mentor-location">
+                            <i class="fas fa-map-marker-alt"></i> F'hain, Berlin
+                        </div>
+                        <p>Breathwork specialist and meditation guide with 12 years of experience in transformative practices.</p>
+                        
+                        <div class="mentor-skills">
+                            <span class="skill">Breathwork</span>
+                            <span class="skill">Meditation</span>
+                            <span class="skill">Energy Healing</span>
+                        </div>
+                        
+                        <div class="mentor-offerings">
+                            <h4>Offerings</h4>
+                            <ul class="offerings-list">
+                                <li>Group breathwork ceremonies</li>
+                                <li>One-on-one guided sessions</li>
+                                <li>Customized meditation programs</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mentor-actions">
+                            <button class="action-btn btn-primary">Book Session</button>
+                            <button class="action-btn btn-secondary">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mentor 2 -->
+                <div class="mentor-card">
+                    <div class="mentor-image">
+                        <i class="fas fa-yin-yang"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name">Julian Roberto </h3>
+                        <div class="mentor-location">
+                            <i class="fas fa-map-marker-alt"></i> Kreuzberg, Berlin
+                        </div>
+                        <p>Yoga philosophy teacher helping people reconnect with their bodies and minds.</p>
+                        
+                        <div class="mentor-skills">
+                            <span class="skill">Yoga Philosophy</span>
+                            <span class="skill">Somatics</span>
+                            <span class="skill">Mindfulness</span>
+                        </div>
+                        
+                        <div class="mentor-offerings">
+                            <h4>Offerings</h4>
+                            <ul class="offerings-list">
+                                <li>Philosophy of yoga workshops</li>
+                                <li>Embodiment practices</li>
+                                <li>Mindfulness coaching</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mentor-actions">
+                            <button class="action-btn btn-primary">Book Session</button>
+                            <button class="action-btn btn-secondary">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mentor 3 -->
+                <div class="mentor-card">
+                    <div class="mentor-image">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name"> Mary Marmalade </h3>
+                        <div class="mentor-location">
+                            <i class="fas fa-map-marker-alt"></i> Sweet dreams, Berlin
+                        </div>
+                        <p>Visualization expert and space holder for transformative experiences in nature.</p>
+                        
+                        <div class="mentor-skills">
+                            <span class="skill">Visualization</span>
+                            <span class="skill">Nature Therapy</span>
+                            <span class="skill">Ritual Creation</span>
+                            <span class="skill">Lick (and pick) fruits ;)  </span>
+
+                        </div>
+                        
+                        <div class="mentor-offerings">
+                            <h4>Offerings</h4>
+                            <ul class="offerings-list">
+                                <li>Guided visualization journeys</li>
+                                <li>Mountain retreats</li>
+                                <li>Custom ritual design</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mentor-actions">
+                            <button class="action-btn btn-primary">Book Session</button>
+                            <button class="action-btn btn-secondary">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p> Connecting You with some cool stuff</p>
+            <p>Questions? throw a thought at: whisper@telepathy.com</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple search functionality
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const location = document.getElementById('location').value;
+            const interest = document.getElementById('interest').value;
+            const format = document.getElementById('format').value;
+            
+            if (!location) {
+                alert('Please enter your location to find mentors near you.');
+                return;
+            }
+            
+            // In a real application, this would fetch results from a database
+            alert(`Searching for ${interest || 'wellness'} mentors in ${location} for ${format || 'group/individual'} sessions...`);
+            
+            // Scroll to results section
+            document.querySelector('.results-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            }
+        });
+        
+        // Animate mentor cards on scroll
+        const mentorCards = document.querySelectorAll('.mentor-card');
+        
+        function checkScroll() {
+            mentorCards.forEach(card => {
+                const position = card.getBoundingClientRect();
+                
+                // If card is in viewport, add animation class
+                if(position.top < window.innerHeight - 100) {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                }
+            });
+        }
+        
+        // Initialize opacity for animation
+        mentorCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+        });
+        
+        // Check scroll position on load and scroll
+        window.addEventListener('load', checkScroll);
+        window.addEventListener('scroll', checkScroll);
+    </script>
+</body>
+</html>
+
